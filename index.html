@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 15: O Futuro com "Will" (Mobile Optimized)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --bg-light: #f8f9fa;
+            --text-color: #333;
+            --card-bg: #ffffff;
+            --border-radius: 12px;
+            --shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* Reset Global */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: var(--text-color);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        /* Navigation Buttons */
+        .nav-btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            transition: background 0.2s;
+            text-align: center;
+            width: 100%;
+        }
+
+        .nav-btn:hover {
+            background-color: #1a252f;
+        }
+
+        /* Headers */
+        h1 {
+            text-align: center;
+            color: var(--secondary-color);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        h2, h3 {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.4rem;
+        }
+
+        h4 {
+            color: var(--primary-color);
+            margin-top: 20px;
+        }
+
+        /* Cards & Sections */
+        .theme-intro, .nota-gramatical, .nota-dica, .extra-task, .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--primary-color);
+            width: 100%;
+        }
+
+        .nota-dica { border-left-color: #16a085; background-color: #e8f6f3; }
+        .extra-task { border-left-color: #9b59b6; background-color: #f5eef8; }
+        .nota-gramatical { border-left-color: #f39c12; background-color: #fffbf0; }
+
+        /* Mobile Optimized Tables (Listas de frases) */
+        .mobile-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .mobile-table th {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .mobile-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            vertical-align: top;
+        }
+
+        .mobile-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Specific Column Styles */
+        .col-english {
+            width: 45%;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        .col-details {
+            width: 55%;
+        }
+
+        /* Stacked Details Styles */
+        .ipa-text {
+            font-family: 'Courier New', monospace;
+            color: #e67e22;
+            font-size: 0.9em;
+            display: block;
+            margin-bottom: 4px;
+            word-wrap: break-word;
+        }
+
+        .pronunciation-text {
+            font-style: italic;
+            color: #7f8c8d;
+            font-size: 0.85em;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .translation-text {
+            color: #555;
+            font-size: 0.95em;
+            display: block;
+            border-top: 1px dashed #eee;
+            padding-top: 4px;
+        }
+
+        .example-word {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        /* Audio Button */
+        .audio-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-left: 5px;
+            padding: 5px;
+            border-radius: 50%;
+            transition: background 0.2s;
+            vertical-align: middle;
+        }
+
+        .audio-btn:hover {
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        
+        .audio-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Vocab Layout */
+        .vocab-item {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .vocab-word {
+            font-size: 1.1em;
+            color: var(--secondary-color);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .vocab-details {
+            margin-top: 5px;
+            padding-left: 10px;
+            border-left: 3px solid #ddd;
+        }
+
+        /* Exercises */
+        .fill-in-blank {
+            color: var(--primary-color);
+            font-weight: bold;
+            display: inline-block;
+            min-width: 60px;
+            text-align: center;
+            border-bottom: 1px solid var(--primary-color);
+        }
+
+        .exercise-list li {
+            margin-bottom: 12px;
+        }
+
+        /* Gabarito Section */
+        details.gabarito {
+            background-color: #f1f1f1;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        details.gabarito summary {
+            font-weight: bold;
+            cursor: pointer;
+            color: var(--secondary-color);
+        }
+
+        .quiz-options { list-style: none; padding: 0; }
+        .quiz-options li { margin-bottom: 8px; padding: 8px; background: white; border-radius: 4px; }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #7f8c8d;
+        }
+
+        /* Estilo Específico para Tabelas de Estrutura */
+        .structure-table {
+            min-width: 100%; 
+        }
+        .structure-table th, .structure-table td {
+            white-space: nowrap;
+            padding: 10px;
+            text-align: left;
+        }
+        .scroll-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            background: white;
+        }
+
+        /* Small screen adjustments */
+        @media (max-width: 600px) {
+            .mobile-table:not(.structure-table) thead { display: none; }
+            .mobile-table:not(.structure-table) td { 
+                display: block; 
+                width: 100%; 
+                padding: 10px 15px;
+            }
+            .mobile-table:not(.structure-table) .col-english {
+                background-color: #f9f9f9;
+                padding-top: 15px;
+                border-bottom: none;
+            }
+            .mobile-table:not(.structure-table) .col-details {
+                padding-bottom: 15px;
+                border-bottom: 2px solid #e0e0e0;
+            }
+            
+            .container { padding: 10px; }
+            h1 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="#" class="nav-btn">⬅️ Voltar ao Menu</a>
+
+    <h1>Aula 15: Planos e Previsões – O Futuro com "Will" <span style="font-size:1.2em">🔮🗓️</span><br><small>(Plans and Predictions – The Future with "Will")</small></h1>
+
+    <div class="theme-intro">
+        <p>Olá! Bem-vindo(a) à Aula 15 e ao Módulo 4: Olhando para Frente e Expressando Capacidades! 🚀</p>
+        <p>Nesta aula, vamos explorar uma das formas de falar sobre o futuro em inglês: usando o verbo modal <strong>"will"</strong>. O tema será <strong>Planos para o próximo fim de semana ou férias, previsões sobre o tempo ou eventos futuros</strong>. Prepare-se para fazer planos e antecipar o que está por vir! ☀️🏖️🎉</p>
+    </div>
+
+    <!-- Section 15.1 Usos -->
+    <section>
+        <h2>15.1 Falando Sobre o Amanhã: Usos do Futuro com "Will" 🗣️</h2>
+        <p>O verbo modal <strong>"will"</strong> (<code>/wɪl/</code>) é usado para expressar ideias sobre o futuro. Ele não muda de forma com os diferentes sujeitos.</p>
+        
+        <div class="card">
+            <ul style="padding-left: 20px;">
+                <li><strong>Decisões Espontâneas (Spontaneous Decisions):</strong> Decisões tomadas no momento da fala.
+                    <div class="vocab-details">
+                        <p>The phone is ringing. I <span class="example-word">will get</span> it. <button class="audio-btn" onclick="playAudio('The phone is ringing. I will get it.')">🔊</button></p>
+                        <span class="ipa-text">/ðə foʊn ɪz ˈrɪŋɪŋ aɪ wɪl ɡet ɪt/</span>
+                        <span class="pronunciation-text">(dhã FÔUN êz RÊN-guin. ÁI uêl GUÉT êt)</span>
+                        <span class="translation-text">O telefone está tocando. Eu vou atender.</span>
+                    </div>
+                </li>
+                <br>
+                <li><strong>Promessas (Promises):</strong>
+                    <div class="vocab-details">
+                        <p>I <span class="example-word">will help</span> you with your homework. <button class="audio-btn" onclick="playAudio('I will help you with your homework.')">🔊</button></p>
+                        <span class="ipa-text">/aɪ wɪl help juː wɪð jɔːr ˈhoʊmwɜːrk/</span>
+                        <span class="pronunciation-text">(ÁI uêl RÉLP iúu uêDH iór RÔUM-uãrk)</span>
+                        <span class="translation-text">Eu vou te ajudar com sua lição de casa.</span>
+                    </div>
+                </li>
+                <br>
+                <li><strong>Previsões (Predictions):</strong> Baseadas em opinião ou intuição.
+                    <div class="vocab-details">
+                        <p>I think it <span class="example-word">will rain</span> tomorrow. <button class="audio-btn" onclick="playAudio('I think it will rain tomorrow.')">🔊</button></p>
+                        <span class="ipa-text">/aɪ θɪŋk ɪt wɪl reɪn təˈmɑːroʊ/</span>
+                        <span class="pronunciation-text">(ÁI THÊNK êt uêl RÊIN tã-MÓ-rôu)</span>
+                        <span class="translation-text">Eu acho que vai chover amanhã.</span>
+                    </div>
+                </li>
+                <br>
+                <li><strong>Ofertas e Pedidos (Offers and Requests):</strong>
+                    <div class="vocab-details">
+                        <p><span class="example-word">Will</span> you open the window, please? <button class="audio-btn" onclick="playAudio('Will you open the window, please?')">🔊</button></p>
+                        <span class="translation-text">Você abre a janela, por favor?</span>
+                    </div>
+                </li>
+                <br>
+                <li><strong>Ações futuras inevitáveis ou fatos futuros:</strong>
+                    <div class="vocab-details">
+                        <p>The sun <span class="example-word">will rise</span> at 6 AM tomorrow. <button class="audio-btn" onclick="playAudio('The sun will rise at 6 AM tomorrow.')">🔊</button></p>
+                        <span class="translation-text">O sol vai nascer às 6h amanhã.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Section 15.2 Affirmative Structure -->
+    <section>
+        <h2>15.2 Afirmando o Futuro 👍</h2>
+        <p><strong>Estrutura Afirmativa:</strong> Sujeito + will + Verbo (forma base).</p>
+        
+        <div class="scroll-wrapper">
+            <table class="mobile-table structure-table">
+                <thead>
+                    <tr>
+                        <th>Sujeito</th>
+                        <th>Modal</th>
+                        <th>Verbo Principal</th>
+                        <th>Exemplo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>I</td><td>will</td><td>travel</td><td>I will travel.</td></tr>
+                    <tr><td>You</td><td>will</td><td>work</td><td>You will work.</td></tr>
+                    <tr><td>He/She/It</td><td>will</td><td>read</td><td>She will read.</td></tr>
+                    <tr><td>We</td><td>will</td><td>cook</td><td>We will cook.</td></tr>
+                    <tr><td>They</td><td>will</td><td>talk</td><td>They will talk.</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p style="font-size: 0.9em; color: #666;">ℹ️ Deslize a tabela para o lado se necessário.</p>
+
+        <p><strong>Contração:</strong> 'll (Ex: I'll, You'll).</p>
+
+        <table class="mobile-table">
+            <thead>
+                <tr>
+                    <th>Inglês</th>
+                    <th>Detalhes (Fonética & Tradução)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-english">
+                        I <span class="example-word">will travel</span> to the coast next summer.
+                        <button class="audio-btn" onclick="playAudio('I will travel to the coast next summer.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/aɪl ˈtrævl tə ðə koʊst nekst ˈsʌmər/</span>
+                        <span class="pronunciation-text">(ÁI-õl TRÉ-võl tã dhã CÔUST NÉKST SÂ-mãr)</span>
+                        <span class="translation-text">Eu viajarei para o litoral no próximo verão.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        You <span class="example-word">will have</span> a great time on your vacation.
+                        <button class="audio-btn" onclick="playAudio('You will have a great time on your vacation.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/juːl hæv ə ɡreɪt taɪm ɑːn jɔːr veɪˈkeɪʃn/</span>
+                        <span class="pronunciation-text">(IÚUL RÉV ã GRÊIT TÁIM ón iór vei-KÊI-shãn)</span>
+                        <span class="translation-text">Você vai se divertir muito nas suas férias.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        He <span class="example-word">will visit</span> his family during the holidays.
+                        <button class="audio-btn" onclick="playAudio('He will visit his family during the holidays.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/hiːl ˈvɪzɪt hɪz ˈfæməli ˈdʊrɪŋ ðə ˈhɑːlədeɪz/</span>
+                        <span class="pronunciation-text">(RÍIL VÊ-zêt rêz FÉ-mã-li DÚ-rin dhã RÓ-lã-deiz)</span>
+                        <span class="translation-text">Ele visitará a família dele durante as férias/feriado.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        She <span class="example-word">will probably buy</span> a new swimsuit for the trip.
+                        <button class="audio-btn" onclick="playAudio('She will probably buy a new swimsuit for the trip.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ʃiːl ˈprɑːbəbli baɪ ə nuː ˈswɪmsuːt fər ðə trɪp/</span>
+                        <span class="pronunciation-text">(XÍIL PRÓ-bã-bli BÁI ã NÚU SUÊM-súut fór dhã TRÊP)</span>
+                        <span class="translation-text">Ela provavelmente comprará um maiô novo para a viagem.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        It <span class="example-word">will be</span> sunny and warm tomorrow.
+                        <button class="audio-btn" onclick="playAudio('It will be sunny and warm tomorrow.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ɪtl biː ˈsʌni ænd wɔːrm təˈmɑːroʊ/</span>
+                        <span class="pronunciation-text">(Ê-tõl bíi SÂ-ni énd UÓRM tã-MÓ-rôu)</span>
+                        <span class="translation-text">Estará ensolarado e quente amanhã.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        We <span class="example-word">will go</span> camping next weekend if the weather is good.
+                        <button class="audio-btn" onclick="playAudio('We will go camping next weekend if the weather is good.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wiːl ɡoʊ ˈkæmpɪŋ nekst ˈwiːkend ɪf ðə ˈweðər ɪz ɡʊd/</span>
+                        <span class="pronunciation-text">(UÍIL GÔU KÉM-pin NÉKST UÍI-kend êf dhã UÉ-dhãr êz GÚD)</span>
+                        <span class="translation-text">Nós iremos acampar no próximo fim de semana se o tempo estiver bom.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        They <span class="example-word">will see</span> many interesting places on their tour.
+                        <button class="audio-btn" onclick="playAudio('They will see many interesting places on their tour.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ðeɪl siː ˈmeni ˈɪntrəstɪŋ ˈpleɪsɪz ɑːn ðer tʊr/</span>
+                        <span class="pronunciation-text">(DHÊI-õl SÍI MÉ-ni ÊN-trãs-tin PLÊI-sêz ón dhér TÚUR)</span>
+                        <span class="translation-text">Eles verão muitos lugares interessantes no tour deles.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        I think the festival <span class="example-word">will be</span> very crowded.
+                        <button class="audio-btn" onclick="playAudio('I think the festival will be very crowded.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/aɪ θɪŋk ðə ˈfestəvl wɪl biː ˈveri ˈkraʊdɪd/</span>
+                        <span class="pronunciation-text">(ÁI THÊNK dhã FÉS-tã-võl uêl bíi VÉ-ri CRÁU-dêd)</span>
+                        <span class="translation-text">Eu acho que o festival estará muito lotado.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        You <span class="example-word">will need</span> a passport for international travel.
+                        <button class="audio-btn" onclick="playAudio('You will need a passport for international travel.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/juːl niːd ə ˈpæspɔːrt fər ˌɪntərˈnæʃnəl ˈtrævl/</span>
+                        <span class="pronunciation-text">(IÚUL NÍID ã PÉS-pórt fór în-tãr-NÉ-shõ-nõl TRÉ-võl)</span>
+                        <span class="translation-text">Você precisará de um passaporte para viagem internacional.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        He <span class="example-word">will call</span> you later about the weekend plans.
+                        <button class="audio-btn" onclick="playAudio('He will call you later about the weekend plans.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/hiːl kɔːl juː ˈleɪtər əˈbaʊt ðə ˈwiːkend plænz/</span>
+                        <span class="pronunciation-text">(RÍIL CÓL iúu LÊI-tãr ã-BÁUT dhã UÍI-kend PLÉNZ)</span>
+                        <span class="translation-text">Ele te ligará mais tarde sobre os planos do fim de semana.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        She hopes it <span class="example-word">will be</span> a memorable trip.
+                        <button class="audio-btn" onclick="playAudio('She hopes it will be a memorable trip.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ʃiː hoʊps ɪt wɪl biː ə ˈmemərəbl trɪp/</span>
+                        <span class="pronunciation-text">(XÍI RÔUPS êt uêl bíi ã MÉ-mõ-rã-bõl TRÊP)</span>
+                        <span class="translation-text">Ela espera que seja uma viagem memorável.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        We <span class="example-word">will stay</span> in a hotel near the beach.
+                        <button class="audio-btn" onclick="playAudio('We will stay in a hotel near the beach.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wiːl steɪ ɪn ə hoʊˈtel nɪr ðə biːtʃ/</span>
+                        <span class="pronunciation-text">(UÍIL STÊI în ã rôu-TÉL NÍIR dhã BÍITCH)</span>
+                        <span class="translation-text">Nós ficaremos em um hotel perto da praia.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        They <span class="example-word">will probably go</span> to the mountains for their next vacation.
+                        <button class="audio-btn" onclick="playAudio('They will probably go to the mountains for their next vacation.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ðeɪl ˈprɑːbəbli ɡoʊ tə ðə ˈmaʊntnz fər ðer nekst veɪˈkeɪʃn/</span>
+                        <span class="pronunciation-text">(DHÊI-õl PRÓ-bã-bli GÔU tã dhã MÁUN-tãnz fór dhér NÉKST vei-KÊI-shãn)</span>
+                        <span class="translation-text">Eles provavelmente irão para as montanhas nas próximas férias.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        I <span class="example-word">will send</span> you the details of the trip tomorrow.
+                        <button class="audio-btn" onclick="playAudio('I will send you the details of the trip tomorrow.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/aɪl send juː ðə dɪˈteɪlz əv ðə trɪp təˈmɑːroʊ/</span>
+                        <span class="pronunciation-text">(ÁI-õl SÉND iúu dhã dĩ-TÊI-õlz óv dhã TRÊP tã-MÓ-rôu)</span>
+                        <span class="translation-text">Eu te enviarei os detalhes da viagem amanhã.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        You <span class="example-word">will enjoy</span> the local food there.
+                        <button class="audio-btn" onclick="playAudio('You will enjoy the local food there.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/juːl ɪnˈdʒɔɪ ðə ˈloʊkl fuːd ðer/</span>
+                        <span class="pronunciation-text">(IÚUL en-DJÓI dhã LÔU-cõl FÚUD DHÉR)</span>
+                        <span class="translation-text">Você vai gostar da comida local lá.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        He <span class="example-word">will take</span> a lot of pictures on his vacation.
+                        <button class="audio-btn" onclick="playAudio('He will take a lot of pictures on his vacation.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/hiːl teɪk ə lɑːt əv ˈpɪktʃərz ɑːn hɪz veɪˈkeɪʃn/</span>
+                        <span class="pronunciation-text">(RÍIL TÊIK ã LÓT óv PÊK-tchãrz ón rêz vei-KÊI-shãn)</span>
+                        <span class="translation-text">Ele vai tirar muitas fotos nas férias dele.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        She <span class="example-word">will learn</span> a new language during her trip.
+                        <button class="audio-btn" onclick="playAudio('She will learn a new language during her trip.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ʃiːl lɜːrn ə nuː ˈlæŋɡwɪdʒ ˈdʊrɪŋ hər trɪp/</span>
+                        <span class="pronunciation-text">(XÍIL LÃRN ã NÚU LÉN-guêdj DÚ-rin rãr TRÊP)</span>
+                        <span class="translation-text">Ela aprenderá um novo idioma durante sua viagem.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        The weather forecast says it <span class="example-word">will be</span> cold next week.
+                        <button class="audio-btn" onclick="playAudio('The weather forecast says it will be cold next week.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ðə ˈweðər ˈfɔːrkæst sez ɪt wɪl biː koʊld nekst wiːk/</span>
+                        <span class="pronunciation-text">(dhã UÉ-dhãr FÓR-kést SÉZ êt uêl bíi CÔULD NÉKST UÍIK)</span>
+                        <span class="translation-text">A previsão do tempo diz que estará frio na próxima semana.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        We <span class="example-word">will have</span> a party for my birthday next month.
+                        <button class="audio-btn" onclick="playAudio('We will have a party for my birthday next month.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wiːl hæv ə ˈpɑːrti fər maɪ ˈbɜːrθdeɪ nekst mʌnθ/</span>
+                        <span class="pronunciation-text">(UÍIL RÉV ã PÁR-ti fór mái BÃRTH-dei NÉKST MÂNTH)</span>
+                        <span class="translation-text">Nós faremos uma festa para o meu aniversário no próximo mês.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        They <span class="example-word">will arrive</span> at the airport at 10 PM.
+                        <button class="audio-btn" onclick="playAudio('They will arrive at the airport at 10 PM.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ðeɪl əˈraɪv æt ði ˈerpɔːrt æt ten piː em/</span>
+                        <span class="pronunciation-text">(DHÊI-õl ã-RÁIV ét dhí ÉR-pórt ét TÉN PÍI-ÉM)</span>
+                        <span class="translation-text">Eles chegarão ao aeroporto às 22h.</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Section 15.3 Negative -->
+    <section>
+        <h2>15.3 Negando o Futuro 👎</h2>
+        <p><strong>Estrutura Negativa:</strong> Sujeito + will not (won't) + Verbo.</p>
+        <p>Contração: <strong>won't</strong> (<code>/woʊnt/</code> - UÔUNT).</p>
+        
+        <table class="mobile-table">
+            <thead>
+                <tr>
+                    <th>Inglês</th>
+                    <th>Detalhes (Fonética & Tradução)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-english">
+                        I <span class="example-word">won't travel</span> this year because I'm busy.
+                        <button class="audio-btn" onclick="playAudio('I won\'t travel this year because I\'m busy.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/aɪ woʊnt ˈtrævl ðɪs jɪr bɪˈkɔːz aɪm ˈbɪzi/</span>
+                        <span class="pronunciation-text">(ÁI UÔUNT TRÉ-võl DHÊS IÍR bi-CÓZ áim BÊ-zi)</span>
+                        <span class="translation-text">Eu não viajarei este ano porque estou ocupado(a).</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        You <span class="example-word">won't need</span> a heavy coat; it will be warm.
+                        <button class="audio-btn" onclick="playAudio('You won\'t need a heavy coat; it will be warm.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/juː woʊnt niːd ə ˈhevi koʊt ɪt wɪl biː wɔːrm/</span>
+                        <span class="pronunciation-text">(IÚU UÔUNT NÍID ã RÉ-vi CÔUT; êt uêl bíi UÓRM)</span>
+                        <span class="translation-text">Você não precisará de um casaco pesado; estará quente.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        He <span class="example-word">won't come</span> to the party next Saturday.
+                        <button class="audio-btn" onclick="playAudio('He won\'t come to the party next Saturday.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/hiː woʊnt kʌm tə ðə ˈpɑːrti nekst ˈsætərdeɪ/</span>
+                        <span class="pronunciation-text">(RÍI UÔUNT CÂM tã dhã PÁR-ti NÉKST SÉ-tãr-dei)</span>
+                        <span class="translation-text">Ele não virá à festa no próximo sábado.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        She <span class="example-word">won't forget</span> to pack her sunscreen.
+                        <button class="audio-btn" onclick="playAudio('She won\'t forget to pack her sunscreen.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ʃiː woʊnt fərˈɡet tə pæk hər ˈsʌnskriːn/</span>
+                        <span class="pronunciation-text">(XÍI UÔUNT fór-GUÉT tã PÉK rãr SÂN-skriin)</span>
+                        <span class="translation-text">Ela não esquecerá de levar seu protetor solar.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        It <span class="example-word">won't rain</span> during our picnic, I hope.
+                        <button class="audio-btn" onclick="playAudio('It won\'t rain during our picnic, I hope.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ɪt woʊnt reɪn ˈdʊrɪŋ aʊər ˈpɪknɪk aɪ hoʊp/</span>
+                        <span class="pronunciation-text">(ÊT UÔUNT RÊIN DÚ-rin áu-ãr PÊK-nêk, ái RÔUP)</span>
+                        <span class="translation-text">Não vai chover durante nosso piquenique, espero.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        We <span class="example-word">won't stay</span> out too late tonight.
+                        <button class="audio-btn" onclick="playAudio('We won\'t stay out too late tonight.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wiː woʊnt steɪ aʊt tuː leɪt təˈnaɪt/</span>
+                        <span class="pronunciation-text">(UÍI UÔUNT STÊI ÁUT TÚU LÊIT tã-NÁIT)</span>
+                        <span class="translation-text">Nós não ficaremos fora até muito tarde hoje à noite.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        They <span class="example-word">won't visit</span> that museum; they visited it last year.
+                        <button class="audio-btn" onclick="playAudio('They won\'t visit that museum; they visited it last year.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ðeɪ woʊnt ˈvɪzɪt ðæt mjuˈziːəm ðeɪ ˈvɪzɪtɪd ɪt læst jɪr/</span>
+                        <span class="pronunciation-text">(DHÊI UÔUNT VÊ-zêt DHÉT miu-ZÍI-ãm; dhêi VÊ-zê-têd êt LÉST IÍR)</span>
+                        <span class="translation-text">Eles não visitarão aquele museu; eles o visitaram ano passado.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        I <span class="example-word">won't be</span> able to join the trip.
+                        <button class="audio-btn" onclick="playAudio('I won\'t be able to join the trip.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/aɪ woʊnt biː ˈeɪbl tə dʒɔɪn ðə trɪp/</span>
+                        <span class="pronunciation-text">(ÁI UÔUNT bíi ÊI-bõl tã DJÓIN dhã TRÊP)</span>
+                        <span class="translation-text">Eu não poderei participar da viagem.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        You <span class="example-word">won't regret</span> visiting that city.
+                        <button class="audio-btn" onclick="playAudio('You won\'t regret visiting that city.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/juː woʊnt rɪˈɡret ˈvɪzɪtɪŋ ðæt ˈsɪti/</span>
+                        <span class="pronunciation-text">(IÚU UÔUNT ri-GRÉT VÊ-zĩ-tin DHÉT SÊ-ti)</span>
+                        <span class="translation-text">Você não vai se arrepender de visitar aquela cidade.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        He <span class="example-word">won't go</span> to the beach if it's cloudy.
+                        <button class="audio-btn" onclick="playAudio('He won\'t go to the beach if it\'s cloudy.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/hiː woʊnt ɡoʊ tə ðə biːtʃ ɪf ɪts ˈklaʊdi/</span>
+                        <span class="pronunciation-text">(RÍI UÔUNT GÔU tã dhã BÍITCH êf êts CLÁU-di)</span>
+                        <span class="translation-text">Ele não irá à praia se estiver nublado.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        She <span class="example-word">won't need</span> our help with the planning.
+                        <button class="audio-btn" onclick="playAudio('She won\'t need our help with the planning.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ʃiː woʊnt niːd aʊər help wɪð ðə ˈplænɪŋ/</span>
+                        <span class="pronunciation-text">(XÍI UÔUNT NÍID áu-ãr RÉLP uêDH dhã PLÉ-nin)</span>
+                        <span class="translation-text">Ela não precisará da nossa ajuda com o planejamento.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        We <span class="example-word">won't know</span> the results until next week.
+                        <button class="audio-btn" onclick="playAudio('We won\'t know the results until next week.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wiː woʊnt noʊ ðə rɪˈzʌlts ənˈtɪl nekst wiːk/</span>
+                        <span class="pronunciation-text">(UÍI UÔUNT NÔU dhã ri-ZÂLTS ãn-TÊL NÉKST UÍIK)</span>
+                        <span class="translation-text">Nós não saberemos os resultados até a próxima semana.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        They <span class="example-word">won't cancel</span> the event because of the weather.
+                        <button class="audio-btn" onclick="playAudio('They won\'t cancel the event because of the weather.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ðeɪ woʊnt ˈkænsl ði ɪˈvent bɪˈkɔːz əv ðə ˈweðər/</span>
+                        <span class="pronunciation-text">(DHÊI UÔUNT KÉN-sõl dhí i-VÉNT bi-CÓZ óv dhã UÉ-dhãr)</span>
+                        <span class="translation-text">Eles não cancelarão o evento por causa do tempo.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        I <span class="example-word">won't spend</span> too much money on souvenirs.
+                        <button class="audio-btn" onclick="playAudio('I won\'t spend too much money on souvenirs.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/aɪ woʊnt spend tuː mʌtʃ ˈmʌni ɑːn ˌsuːvəˈnɪrz/</span>
+                        <span class="pronunciation-text">(ÁI UÔUNT SPÉND TÚU MÂTCH MÂ-ni ón súu-vã-NÍIRZ)</span>
+                        <span class="translation-text">Eu não gastarei muito dinheiro com lembrancinhas.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        You <span class="example-word">won't believe</span> how beautiful that place is.
+                        <button class="audio-btn" onclick="playAudio('You won\'t believe how beautiful that place is.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/juː woʊnt bɪˈliːv haʊ ˈbjuːtɪfl ðæt pleɪs ɪz/</span>
+                        <span class="pronunciation-text">(IÚU UÔUNT bĩ-LÍIV RÁU BIÚU-ti-fõl DHÉT PLÊIS ÊZ)</span>
+                        <span class="translation-text">Você não vai acreditar quão bonito aquele lugar é.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        He <span class="example-word">won't arrive</span> late for the flight.
+                        <button class="audio-btn" onclick="playAudio('He won\'t arrive late for the flight.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/hiː woʊnt əˈraɪv leɪt fər ðə flaɪt/</span>
+                        <span class="pronunciation-text">(RÍI UÔUNT ã-RÁIV LÊIT fór dhã FLÁIT)</span>
+                        <span class="translation-text">Ele não chegará atrasado para o voo.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        She <span class="example-word">won't miss</span> the chance to see the fireworks.
+                        <button class="audio-btn" onclick="playAudio('She won\'t miss the chance to see the fireworks.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ʃiː woʊnt mɪs ðə tʃæns tə siː ðə ˈfaɪərwɜːrks/</span>
+                        <span class="pronunciation-text">(XÍI UÔUNT MÊS dhã TCHÉNS tã SÍI dhã FÁI-ãr-uãrks)</span>
+                        <span class="translation-text">Ela não perderá a chance de ver os fogos de artifício.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        The concert <span class="example-word">won't start</span> before 8 PM.
+                        <button class="audio-btn" onclick="playAudio('The concert won\'t start before 8 PM.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ðə ˈkɑːnsərt woʊnt stɑːrt bɪˈfɔːr eɪt piː em/</span>
+                        <span class="pronunciation-text">(dhã CÓN-sãrt UÔUNT STÁRT bi-FÓR ÊIT PÍI-ÉM)</span>
+                        <span class="translation-text">O show não começará antes das 20h.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        We <span class="example-word">won't have</span> any problems with the reservation.
+                        <button class="audio-btn" onclick="playAudio('We won\'t have any problems with the reservation.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wiː woʊnt hæv ˈeni ˈprɑːbləmz wɪð ðə ˌrezərˈveɪʃn/</span>
+                        <span class="pronunciation-text">(UÍI UÔUNT RÉV É-ni PRÓ-blãmz uêDH dhã ré-zãr-VÊI-shãn)</span>
+                        <span class="translation-text">Nós não teremos nenhum problema com a reserva.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        They <span class="example-word">won't forget</span> this amazing vacation.
+                        <button class="audio-btn" onclick="playAudio('They won\'t forget this amazing vacation.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ðeɪ woʊnt fərˈɡet ðɪs əˈmeɪzɪŋ veɪˈkeɪʃn/</span>
+                        <span class="pronunciation-text">(DHÊI UÔUNT fór-GUÉT DHÊS ã-MÊI-zin vei-KÊI-shãn)</span>
+                        <span class="translation-text">Eles não esquecerão estas férias incríveis.</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Section 15.4 Interrogative -->
+    <section>
+        <h2>15.4 Frases Interrogativas ❓</h2>
+        <p><strong>Estrutura:</strong> Will + Sujeito + Verbo?</p>
+
+        <table class="mobile-table">
+            <thead>
+                <tr>
+                    <th>Inglês</th>
+                    <th>Detalhes (Fonética & Tradução)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Will</span> I <span class="example-word">need</span> a visa for this trip?
+                        <button class="audio-btn" onclick="playAudio('Will I need a visa for this trip?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wɪl aɪ niːd ə ˈviːzə fər ðɪs trɪp/</span>
+                        <span class="pronunciation-text">(UÊL ÁI NÍID ã VÍI-zã fór DHÊS TRÊP?)</span>
+                        <span class="translation-text">Eu precisarei de visto para esta viagem?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Will</span> you <span class="example-word">travel</span> with us next summer?
+                        <button class="audio-btn" onclick="playAudio('Will you travel with us next summer?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wɪl juː ˈtrævl wɪð ʌs nekst ˈsʌmər/</span>
+                        <span class="pronunciation-text">(UÊL IÚU TRÉ-võl uêDH ÂS NÉKST SÂ-mãr?)</span>
+                        <span class="translation-text">Você viajará conosco no próximo verão?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Will</span> he <span class="example-word">be</span> at the airport to meet them?
+                        <button class="audio-btn" onclick="playAudio('Will he be at the airport to meet them?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wɪl hiː biː æt ði ˈerpɔːrt tə miːt ðəm/</span>
+                        <span class="pronunciation-text">(UÊL RÍI BÍI ét dhí ÉR-pórt tã MÍIT dhãm?)</span>
+                        <span class="translation-text">Ele estará no aeroporto para encontrá-los?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Will</span> she <span class="example-word">enjoy</span> the surprise party?
+                        <button class="audio-btn" onclick="playAudio('Will she enjoy the surprise party?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wɪl ʃiː ɪnˈdʒɔɪ ðə sərˈpraɪz ˈpɑːrti/</span>
+                        <span class="pronunciation-text">(UÊL XÍI en-DJÓI dhã sãr-PRÁIZ PÁR-ti?)</span>
+                        <span class="translation-text">Ela vai gostar da festa surpresa?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Will</span> it <span class="example-word">be</span> very hot in July?
+                        <button class="audio-btn" onclick="playAudio('Will it be very hot in July?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wɪl ɪt biː ˈveri hɑːt ɪn dʒʊˈlaɪ/</span>
+                        <span class="pronunciation-text">(UÊL ÊT BÍI VÉ-ri RÓT în dju-LÁI?)</span>
+                        <span class="translation-text">Estará muito quente em julho?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Will</span> we <span class="example-word">have</span> enough time to see everything?
+                        <button class="audio-btn" onclick="playAudio('Will we have enough time to see everything?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wɪl wiː hæv ɪˈnʌf taɪm tə siː ˈevriθɪŋ/</span>
+                        <span class="pronunciation-text">(UÊL UÍI RÉV i-NÂF TÁIM tã SÍI É-vri-thin?)</span>
+                        <span class="translation-text">Nós teremos tempo suficiente para ver tudo?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Will</span> they <span class="example-word">arrive</span> on time for the event?
+                        <button class="audio-btn" onclick="playAudio('Will they arrive on time for the event?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wɪl ðeɪ əˈraɪv ɑːn taɪm fər ði ɪˈvent/</span>
+                        <span class="pronunciation-text">(UÊL DHÊI ã-RÁIV ón TÁIM fór dhí i-VÉNT?)</span>
+                        <span class="translation-text">Eles chegarão a tempo para o evento?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        What <span class="example-word">will</span> you <span class="example-word">do</span> on your next day off?
+                        <button class="audio-btn" onclick="playAudio('What will you do on your next day off?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wʌt wɪl juː duː ɑːn jɔːr nekst deɪ ɔːf/</span>
+                        <span class="pronunciation-text">(UÓT UÊL IÚU DÚU ón iór NÉKST DÊI ÓF?)</span>
+                        <span class="translation-text">O que você fará no seu próximo dia de folga?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        Where <span class="example-word">will</span> she <span class="example-word">stay</span> during her vacation?
+                        <button class="audio-btn" onclick="playAudio('Where will she stay during her vacation?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wer wɪl ʃiː steɪ ˈdʊrɪŋ hər veɪˈkeɪʃn/</span>
+                        <span class="pronunciation-text">(UÉR UÊL XÍI STÊI DÚ-rin rãr vei-KÊI-shãn?)</span>
+                        <span class="translation-text">Onde ela ficará durante as férias dela?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        Why <span class="example-word">will</span> he <span class="example-word">choose</span> that destination?
+                        <button class="audio-btn" onclick="playAudio('Why will he choose that destination?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/waɪ wɪl hiː tʃuːz ðæt ˌdestɪˈneɪʃn/</span>
+                        <span class="pronunciation-text">(UÁI UÊL RÍI TCHÚUZ DHÉT dés-tĩ-NÊI-shãn?)</span>
+                        <span class="translation-text">Por que ele escolherá aquele destino?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        Who <span class="example-word">will</span> they <span class="example-word">meet</span> at the conference?
+                        <button class="audio-btn" onclick="playAudio('Who will they meet at the conference?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/huː wɪl ðeɪ miːt æt ðə ˈkɑːnfərəns/</span>
+                        <span class="pronunciation-text">(RÚU UÊL DHÊI MÍIT ét dhã CÓN-fã-rãns?)</span>
+                        <span class="translation-text">Quem eles encontrarão na conferência?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        When <span class="example-word">will</span> we <span class="example-word">know</span> the weather forecast?
+                        <button class="audio-btn" onclick="playAudio('When will we know the weather forecast?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wen wɪl wiː noʊ ðə ˈweðər ˈfɔːrkæst/</span>
+                        <span class="pronunciation-text">(UÉN UÊL UÍI NÔU dhã UÉ-dhãr FÓR-kést?)</span>
+                        <span class="translation-text">Quando saberemos a previsão do tempo?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        How <span class="example-word">will</span> you <span class="example-word">prepare</span> for the long flight?
+                        <button class="audio-btn" onclick="playAudio('How will you prepare for the long flight?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/haʊ wɪl juː prɪˈper fər ðə lɔːŋ flaɪt/</span>
+                        <span class="pronunciation-text">(RÁU UÊL IÚU pri-PÉR fór dhã LÓN FLÁIT?)</span>
+                        <span class="translation-text">Como você se preparará para o voo longo?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Will</span> it <span class="example-word">be</span> possible to book the tickets online?
+                        <button class="audio-btn" onclick="playAudio('Will it be possible to book the tickets online?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wɪl ɪt biː ˈpɑːsəbl tə bʊk ðə ˈtɪkɪts ˈɑːnlaɪn/</span>
+                        <span class="pronunciation-text">(UÊL ÊT BÍI PÓ-sã-bõl tã BÚK dhã TÊ-kêts ÓN-láin?)</span>
+                        <span class="translation-text">Será possível reservar as passagens online?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Will</span> he <span class="example-word">remember</span> to bring his camera?
+                        <button class="audio-btn" onclick="playAudio('Will he remember to bring his camera?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wɪl hiː rɪˈmembər tə brɪŋ hɪz ˈkæmərə/</span>
+                        <span class="pronunciation-text">(UÊL RÍI ri-MÉM-bãr tã BRÊN rêz KÉ-mã-rã?)</span>
+                        <span class="translation-text">Ele se lembrará de trazer a câmera dele?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Will</span> she <span class="example-word">need</span> any special equipment for the hike?
+                        <button class="audio-btn" onclick="playAudio('Will she need any special equipment for the hike?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wɪl ʃiː niːd ˈeni ˈspeʃl ɪˈkwɪpmənt fər ðə haɪk/</span>
+                        <span class="pronunciation-text">(UÊL XÍI NÍID É-ni SPÉ-shõl i-CUÊP-mãnt fór dhã RÁIK?)</span>
+                        <span class="translation-text">Ela precisará de algum equipamento especial para a caminhada?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Will</span> we <span class="example-word">see</span> any wildlife on the tour?
+                        <button class="audio-btn" onclick="playAudio('Will we see any wildlife on the tour?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wɪl wiː siː ˈeni ˈwaɪldlaɪf ɑːn ðə tʊr/</span>
+                        <span class="pronunciation-text">(UÊL UÍI SÍI É-ni UÁILD-láif ón dhã TÚUR?)</span>
+                        <span class="translation-text">Nós veremos alguma vida selvagem no passeio?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Will</span> they <span class="example-word">have</span> a good view from their hotel room?
+                        <button class="audio-btn" onclick="playAudio('Will they have a good view from their hotel room?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wɪl ðeɪ hæv ə ɡʊd vjuː frəm ðer hoʊˈtel ruːm/</span>
+                        <span class="pronunciation-text">(UÊL DHÊI RÉV ã GÚD VIÚU frãm dhér rôu-TÉL RÚUM?)</span>
+                        <span class="translation-text">Eles terão uma boa vista do quarto de hotel deles?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        What time <span class="example-word">will</span> the event <span class="example-word">start</span> next weekend?
+                        <button class="audio-btn" onclick="playAudio('What time will the event start next weekend?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wʌt taɪm wɪl ði ɪˈvent stɑːrt nekst ˈwiːkend/</span>
+                        <span class="pronunciation-text">(UÓT TÁIM UÊL dhí i-VÉNT STÁRT NÉKST UÍI-kend?)</span>
+                        <span class="translation-text">A que horas o evento começará no próximo fim de semana?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        How long <span class="example-word">will</span> the journey <span class="example-word">take</span>?
+                        <button class="audio-btn" onclick="playAudio('How long will the journey take?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/haʊ lɔːŋ wɪl ðə ˈdʒɜːrni teɪk/</span>
+                        <span class="pronunciation-text">(RÁU LÓN UÊL dhã DJÃR-ni TÊIK?)</span>
+                        <span class="translation-text">Quanto tempo a jornada levará?</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Section 15.5 Short Answers -->
+    <section>
+        <h2>15.5 Respostas Curtas 🗣️✔️</h2>
+        <div class="card">
+            <ul style="padding-left: 20px;">
+                <li>
+                    <strong>Will you travel next year?</strong> <button class="audio-btn" onclick="playAudio('Will you travel next year?')">🔊</button>
+                    <div style="margin-left: 15px; margin-top: 5px;">
+                        <p>Yes, I will. <button class="audio-btn" onclick="playAudio('Yes, I will.')">🔊</button></p>
+                        <p>No, I won't. <button class="audio-btn" onclick="playAudio('No, I won\'t.')">🔊</button></p>
+                    </div>
+                </li>
+                <br>
+                <li>
+                    <strong>Will it rain tomorrow?</strong> <button class="audio-btn" onclick="playAudio('Will it rain tomorrow?')">🔊</button>
+                    <div style="margin-left: 15px; margin-top: 5px;">
+                        <p>Yes, it will. <button class="audio-btn" onclick="playAudio('Yes, it will.')">🔊</button></p>
+                        <p>No, it won't. <button class="audio-btn" onclick="playAudio('No, it won\'t.')">🔊</button></p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Vocabulary Section -->
+    <section>
+        <h2>Vocabulário: Planos e Previsões 📚</h2>
+        <div class="card">
+            <!-- Item 1 -->
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Weekend</span> <button class="audio-btn" onclick="playAudio('Weekend')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˈwiːkend/</span>
+                    <span class="pronunciation-text">(UÍI-kend)</span>
+                    <span class="translation-text">Fim de semana</span>
+                    <div style="margin-top:8px;">
+                        <em>Ex: What will you do next weekend?</em> <button class="audio-btn" onclick="playAudio('What will you do next weekend?')">🔊</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Vacation</span> (US) / <span class="example-word">Holiday</span> (UK) <button class="audio-btn" onclick="playAudio('Vacation. Holiday.')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/veɪˈkeɪʃn/ / /ˈhɑːlədeɪ/</span>
+                    <span class="pronunciation-text">(vei-KÊI-shãn) / (RÓ-lã-dei)</span>
+                    <span class="translation-text">Férias</span>
+                    <div style="margin-top:8px;">
+                        <em>Ex: We will go on vacation in July.</em> <button class="audio-btn" onclick="playAudio('We will go on vacation in July.')">🔊</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Plan(s)</span> <button class="audio-btn" onclick="playAudio('Plans')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/plæn(z)/</span>
+                    <span class="pronunciation-text">(PLÉN(Z))</span>
+                    <span class="translation-text">Plano(s)</span>
+                    <div style="margin-top:8px;">
+                        <em>Ex: Do you have any plans for tonight?</em> <button class="audio-btn" onclick="playAudio('Do you have any plans for tonight?')">🔊</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Forecast</span> <button class="audio-btn" onclick="playAudio('Forecast')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˈfɔːrkæst/</span>
+                    <span class="pronunciation-text">(FÓR-kést)</span>
+                    <span class="translation-text">Previsão (do tempo)</span>
+                    <div style="margin-top:8px;">
+                        <em>Ex: The weather forecast says it will be sunny.</em> <button class="audio-btn" onclick="playAudio('The weather forecast says it will be sunny.')">🔊</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Tomorrow</span> <button class="audio-btn" onclick="playAudio('Tomorrow')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/təˈmɑːroʊ/</span>
+                    <span class="pronunciation-text">(tã-MÓ-rôu)</span>
+                    <span class="translation-text">Amanhã</span>
+                    <div style="margin-top:8px;">
+                        <em>Ex: What will you do tomorrow?</em> <button class="audio-btn" onclick="playAudio('What will you do tomorrow?')">🔊</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Next week</span> <button class="audio-btn" onclick="playAudio('Next week')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/nekst wiːk/</span>
+                    <span class="pronunciation-text">(NÉKST UÍIK)</span>
+                    <span class="translation-text">Próxima semana</span>
+                    <div style="margin-top:8px;">
+                        <em>Ex: She will start her new job next month.</em> <button class="audio-btn" onclick="playAudio('She will start her new job next month.')">🔊</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 7 -->
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Soon</span> <button class="audio-btn" onclick="playAudio('Soon')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/suːn/</span>
+                    <span class="pronunciation-text">(SÚUN)</span>
+                    <span class="translation-text">Em breve / Logo</span>
+                    <div style="margin-top:8px;">
+                        <em>Ex: The event will start soon.</em> <button class="audio-btn" onclick="playAudio('The event will start soon.')">🔊</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 8 -->
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Later</span> <button class="audio-btn" onclick="playAudio('Later')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˈleɪtər/</span>
+                    <span class="pronunciation-text">(LÊI-tãr)</span>
+                    <span class="translation-text">Mais tarde</span>
+                    <div style="margin-top:8px;">
+                        <em>Ex: I'll call you later.</em> <button class="audio-btn" onclick="playAudio('I\'ll call you later.')">🔊</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 9 -->
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Probably</span> <button class="audio-btn" onclick="playAudio('Probably')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˈprɑːbəbli/</span>
+                    <span class="pronunciation-text">(PRÓ-bã-bli)</span>
+                    <span class="translation-text">Provavelmente</span>
+                    <div style="margin-top:8px;">
+                        <em>Ex: He'll probably be late.</em> <button class="audio-btn" onclick="playAudio('He\'ll probably be late.')">🔊</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 10 -->
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Maybe / Perhaps</span> <button class="audio-btn" onclick="playAudio('Maybe. Perhaps.')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˈmeɪbi/ / /pərˈhæps/</span>
+                    <span class="pronunciation-text">(MÊI-bíi) / (pãr-RÉPS)</span>
+                    <span class="translation-text">Talvez</span>
+                    <div style="margin-top:8px;">
+                        <em>Ex: Maybe we will go to the cinema.</em> <button class="audio-btn" onclick="playAudio('Maybe we will go to the cinema.')">🔊</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 11 -->
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Promise</span> <button class="audio-btn" onclick="playAudio('Promise')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˈprɑːmɪs/</span>
+                    <span class="pronunciation-text">(PRÓ-mês)</span>
+                    <span class="translation-text">Promessa / Prometer</span>
+                    <div style="margin-top:8px;">
+                        <em>Ex: I promise I will call you.</em> <button class="audio-btn" onclick="playAudio('I promise I will call you.')">🔊</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 12 -->
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Decision</span> <button class="audio-btn" onclick="playAudio('Decision')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/dɪˈsɪʒn/</span>
+                    <span class="pronunciation-text">(dĩ-SÊ-jãn)</span>
+                    <span class="translation-text">Decisão</span>
+                    <div style="margin-top:8px;">
+                        <em>Ex: It's a big decision, I will think about it.</em> <button class="audio-btn" onclick="playAudio('It\'s a big decision, I will think about it.')">🔊</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 13 -->
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">I think...</span> <button class="audio-btn" onclick="playAudio('I think')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/aɪ θɪŋk/</span>
+                    <span class="pronunciation-text">(ÁI THÊNK)</span>
+                    <span class="translation-text">Eu acho que...</span>
+                    <div style="margin-top:8px;">
+                        <em>Ex: I think our team will win the game.</em> <button class="audio-btn" onclick="playAudio('I think our team will win the game.')">🔊</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 14 -->
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">I hope...</span> <button class="audio-btn" onclick="playAudio('I hope')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/aɪ hoʊp/</span>
+                    <span class="pronunciation-text">(ÁI RÔUP)</span>
+                    <span class="translation-text">Eu espero que...</span>
+                    <div style="margin-top:8px;">
+                        <em>Ex: I hope we will see you at the party.</em> <button class="audio-btn" onclick="playAudio('I hope we will see you at the party.')">🔊</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 15 -->
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">In the future</span> <button class="audio-btn" onclick="playAudio('In the future')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ɪn ðə ˈfjuːtʃər/</span>
+                    <span class="pronunciation-text">(ên dhã FIÚU-tchãr)</span>
+                    <span class="translation-text">No futuro</span>
+                    <div style="margin-top:8px;">
+                        <em>Ex: In the future, cars will fly.</em> <button class="audio-btn" onclick="playAudio('In the future, cars will fly.')">🔊</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Extra Task -->
+    <div class="extra-task">
+        <h4>Extra Task: Reading and Comprehension 🧠</h4>
+        <p><strong>Translate the following text. Pay attention to how "will" is used for plans and predictions about the future.</strong></p>
+        <p>
+            Next Saturday, our family will finally test our new sky-car. My son, Leo, thinks it will be the most exciting day of his life. He keeps saying, "Dad, I bet it will fly faster than a rocket!" I'm not so sure about that, but I truly hope he'll enjoy the experience. My wife, Clara, will be in charge of the food. She will pack a futuristic picnic for us. She told me she won't make any old-fashioned sandwiches. Instead, she'll prepare nutrient paste and some bottles of hydro-juice. She believes it will be a much healthier option for everyone.
+        </p>
+        <p>
+            I'll probably miss the taste of real bread, but I promise I won't complain about it. Our plan is to fly over the new mega-city and see the famous vertical farms from above. The weather forecast says it will be a sunny day, with no chance of acid rain, which is great news. We won't stay out too late in the evening because Leo will have his virtual reality homework to finish before bedtime. I think we will create some wonderful and lasting memories together.
+        </p>
+        <p>
+            Perhaps we'll even see a commercial spaceship taking off from the spaceport. That will surely be a sight to remember for a long time. I promise I will take a lot of holo-pictures to show our friends. Clara says she'll probably just relax and enjoy the incredible view from the sky-car. She definitely won't worry about traffic, for sure. Leo will likely ask a million questions about the sky-car's anti-gravity engine, and I'll try my best to answer them all. I believe it will be a perfect family day, a small adventure in our high-tech lives. These moments will be what we cherish most.
+        </p>
+
+        <div style="margin-top: 20px;">
+            <strong>Quiz:</strong> Based on the text, what will Clara pack for the picnic?
+        </div>
+        <ul class="quiz-options">
+            <li>A) Old-fashioned sandwiches and juice.</li>
+            <li>B) Pizza and soda.</li>
+            <li>C) Nutrient paste and hydro-juice.</li>
+            <li>D) Hamburgers and fries.</li>
+            <li>E) She won't pack anything for the picnic.</li>
+        </ul>
+        
+        <details class="gabarito">
+            <summary>Ver Gabarito do Quiz</summary>
+            <p><strong>Resposta Correta:</strong> C</p>
+        </details>
+    </div>
+
+    <!-- Continue Learning -->
+    <section>
+        <h3>Como Continuar Aprendendo? 🚀</h3>
+        <div class="nota-gramatical" style="border-left-color: #27ae60; background-color: #e6f7ef;">
+            <p>Ótimo trabalho com o futuro com "will"! Para continuar praticando:</p>
+            <ul class="exercise-list" style="list-style-type: disc;">
+                <li><strong>Faça Planos (Reais ou Imaginários):</strong> Pense no seu próximo fim de semana ou nas suas próximas férias. O que você fará? Escreva algumas frases usando "I will..." ou "I'll...".</li>
+                <li><strong>Previsões Diárias:</strong> Tente fazer pequenas previsões sobre o seu dia. "I think it will be a busy day." "Maybe I will have pizza for dinner."</li>
+                <li><strong>Decisões Espontâneas:</strong> Ao longo do dia, se você tomar uma decisão no momento, pense em como diria isso em inglês usando "will". Ex: (Alguém derruba algo) "Don't worry, I'll get it."</li>
+                <li><strong>Promessas (Pequenas):</strong> Pratique fazer pequenas promessas a si mesmo ou a outros. "I will finish this chapter today." "I will call my friend later."</li>
+                <li><strong>Ouça e Observe:</strong> Preste atenção em como "will" e "won't" são usados em músicas, filmes e conversas. Note as contrações.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Exercises -->
+    <section>
+        <h3>Exercícios Práticos 📝</h3>
+        <div class="secao-exercicios card">
+            <h4>Parte 1: Complete com "will" ou "won't"</h4>
+            <p>Complete as frases com "will" ou "won't" de acordo com o contexto.</p>
+            <ol class="exercise-list">
+                <li>I think it <span class="fill-in-blank">__________</span> rain tomorrow; the sky is very dark.</li>
+                <li>She promised she <span class="fill-in-blank">__________</span> be late for the meeting.</li>
+                <li>A: The phone is ringing! B: OK, I <span class="fill-in-blank">__________</span> get it!</li>
+                <li>They <span class="fill-in-blank">__________</span> probably travel to Europe next year if they save enough money.</li>
+                <li>I'm very tired, so I <span class="fill-in-blank">__________</span> go to the party tonight.</li>
+                <li><span class="fill-in-blank">__________</span> you help me with this heavy bag, please?</li>
+            </ol>
+
+            <h4>Parte 2: Transforme as Frases</h4>
+            <p>Transforme as frases afirmativas em negativas e depois em interrogativas usando "will".</p>
+            <ol class="exercise-list">
+                <li>We will visit the museum next Saturday.
+                    <br>Negativa: <span class="fill-in-blank">__________</span>.
+                    <br>Interrogativa: <span class="fill-in-blank">__________</span>?
+                </li>
+                <li>He will buy a new car soon.
+                    <br>Negativa: <span class="fill-in-blank">__________</span>.
+                    <br>Interrogativa: <span class="fill-in-blank">__________</span>?
+                </li>
+                <li>They will have a barbecue on Sunday.
+                    <br>Negativa: <span class="fill-in-blank">__________</span>.
+                    <br>Interrogativa: <span class="fill-in-blank">__________</span>?
+                </li>
+            </ol>
+
+            <details class="gabarito">
+                <summary>Ver Respostas dos Exercícios</summary>
+                <p><em>Respostas da Parte 1: 1. will, 2. won't, 3. will, 4. will, 5. won't, 6. Will.</em></p>
+                <p><em>Respostas da Parte 2: 1. We won't visit the museum next Saturday. / Will we visit the museum next Saturday? 2. He won't buy a new car soon. / Will he buy a new car soon? 3. They won't have a barbecue on Sunday. / Will they have a barbecue on Sunday?</em></p>
+            </details>
+        </div>
+    </section>
+
+    <!-- Conclusion -->
+    <section>
+        <h3>Conclusão 🥳</h3>
+        <p>Parabéns por concluir a Aula 15! Agora você sabe como usar "will" para falar sobre o futuro, fazer previsões, promessas e tomar decisões espontâneas. Esta é uma ferramenta muito versátil e importante no inglês.</p>
+        <p>Continue praticando a formação de frases afirmativas, negativas e interrogativas com "will" e "won't".</p>
+        <p>Na Aula 16: "Intenções e Planos Concretos – O Futuro com "Going To"", vamos aprender outra forma de falar sobre o futuro, focando em planos e intenções mais definidos. Até lá!</p>
+    </section>
+
+    <a href="#" class="nav-btn">⬅️ Voltar ao Menu</a>
+
+    <footer>
+        <p>Aula 15: Planos e Previsões – O Futuro com "Will"</p>
+    </footer>
+
+</div>
+
+<script>
+    // Configuração do SpeechSynthesis para Mobile
+    let voices = [];
+    
+    // Função para carregar vozes
+    function loadVoices() { 
+        voices = window.speechSynthesis.getVoices(); 
+    }
+    
+    // Garantir carregamento assíncrono (especialmente para Chrome/Android)
+    if (window.speechSynthesis.onvoiceschanged !== undefined) {
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+    
+    // Tentativa inicial de carregamento
+    loadVoices();
+
+    function playAudio(text) {
+        if ('speechSynthesis' in window) {
+            // Cancela áudio anterior para não sobrepor
+            window.speechSynthesis.cancel();
+            
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US'; 
+            utterance.rate = 0.85; // Velocidade um pouco mais lenta para estudo
+
+            // Se vozes ainda não carregaram (edge case), tenta carregar agora
+            if (voices.length === 0) voices = window.speechSynthesis.getVoices();
+            
+            // Lógica de seleção de voz (Prioridade: Google/Premium > Nativa US > Qualquer EN)
+            const targetVoice = voices.find(voice => 
+                (voice.name.includes('Google') || voice.name.includes('Premium') || voice.name.includes('Enhanced')) && voice.lang === 'en-US'
+            ) || voices.find(voice => 
+                voice.lang === 'en-US'
+            ) || voices.find(voice => 
+                voice.lang.startsWith('en')
+            );
+
+            if (targetVoice) {
+                utterance.voice = targetVoice;
+                console.log("Voz selecionada: " + targetVoice.name);
+            }
+
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert("Desculpe, seu navegador não suporta áudio nativo.");
+        }
+    }
+</script>
+
+</body>
+</html>
