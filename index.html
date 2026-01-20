@@ -1007,45 +1007,63 @@
 <script>
     let voices = [];
     
-    // Carregamento de vozes robusto para Mobile
+    // Função para carregar vozes de forma robusta em mobile
     function loadVoices() { 
         voices = window.speechSynthesis.getVoices(); 
     }
 
+    // Garante carregamento assíncrono (crítico para Chrome Android/iOS)
     if (window.speechSynthesis.onvoiceschanged !== undefined) {
         window.speechSynthesis.onvoiceschanged = loadVoices;
     }
+    
+    // Tenta carregar imediatamente também
     loadVoices();
 
     function playAudio(text) {
         if ('speechSynthesis' in window) {
-            window.speechSynthesis.cancel(); // Para áudio anterior
+            // Fix para Android: Se estiver pausado, resume antes de cancelar
+            if (window.speechSynthesis.paused) {
+                window.speechSynthesis.resume();
+            }
+
+            // Cancela áudios anteriores para evitar fila
+            window.speechSynthesis.cancel();
 
             const utterance = new SpeechSynthesisUtterance(text);
             utterance.lang = 'en-US'; 
-            utterance.rate = 0.9;
+            utterance.rate = 0.9; // Velocidade levemente reduzida para clareza
             utterance.pitch = 1;
+            utterance.volume = 1; // Garante volume máximo
 
+            // Recarrega vozes se a lista estiver vazia (comum no Android na 1ª tentativa)
             if (voices.length === 0) voices = window.speechSynthesis.getVoices();
             
-            // Prioriza vozes "Premium" ou "Google"
+            // Lógica de Prioridade de Voz: Google > Premium > Enhanced > Padrão
             const targetVoice = voices.find(voice => 
                 (voice.name.includes('Google') && voice.lang === 'en-US') || 
                 (voice.name.includes('Premium') && voice.lang === 'en-US') ||
                 (voice.name.includes('Enhanced') && voice.lang === 'en-US')
             ) || voices.find(voice => 
-                voice.lang === 'en-US' && !voice.localService
+                voice.lang === 'en-US' && !voice.localService // Tenta online primeiro
             ) || voices.find(voice => 
-                voice.lang === 'en-US'
+                voice.lang === 'en-US' // Qualquer en-US
             ) || voices.find(voice => 
-                voice.lang.startsWith('en')
+                voice.lang.startsWith('en') // Qualquer inglês
             );
 
-            if (targetVoice) utterance.voice = targetVoice;
+            if (targetVoice) {
+                utterance.voice = targetVoice;
+            }
+
+            // Tratamento de erro
+            utterance.onerror = function(e) {
+                console.error('Erro de síntese de fala:', e);
+            };
 
             window.speechSynthesis.speak(utterance);
         } else {
-            alert("Áudio não suportado neste navegador.");
+            alert("Seu navegador não suporta áudio nativo. Tente usar Chrome, Safari ou Edge atualizados.");
         }
     }
 </script>
